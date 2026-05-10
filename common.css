@@ -1,0 +1,1456 @@
+/* =========================================================
+   Спільний файл стилів Aroma Storm
+   Один CSS використовується для main.html, menu.html,
+   about.html і contacts.html, щоб шапка, футер, кольори
+   та адаптивність були однаковими на всьому сайті.
+   ========================================================= */
+
+/* Загальне скидання стилів і базова типографіка */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  background: #f5f1eb;
+  color: #241314;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Спільний hero-блок і навігація */
+.hero {
+  position: relative;
+  height: clamp(300px, 43vw, 420px);
+  overflow: hidden;
+  background: #1d0b0a;
+}
+
+/* Затемнює hero, щоб навігація добре читалась на світлих фото. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, .18);
+  pointer-events: none;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 70%;
+  filter: brightness(48%);
+}
+
+.nav {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 10;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  background: #260b0b;
+}
+
+.burger {
+  width: 76px;
+  min-width: 76px;
+  height: 74px;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 52px;
+  height: 4px;
+  margin: 0;
+  border-radius: 4px;
+  background: #d4c5c0;
+}
+
+.nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(24px, 5.5vw, 92px);
+  padding: 0 clamp(18px, 4vw, 70px) 0 12px;
+  list-style: none;
+}
+
+.nav a {
+  position: relative;
+  display: block;
+  padding: 28px 0 24px;
+  color: #d9cdca;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 132px;
+  height: 13px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #b7adad;
+}
+
+/* Маленьке JS-повідомлення після додавання товару або відгуку. */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 30;
+  padding: 12px 18px;
+  transform: translate(-50%, 18px);
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 999px;
+  background: rgba(38, 11, 11, .82);
+  color: #f5f1eb;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.toast.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+/* Спільні мікроанімації. Вони легкі, щоб сайт не виглядав перевантаженим. */
+.card,
+.review-button,
+.map-link,
+.nav a {
+  transition: transform .22s ease, box-shadow .22s ease, opacity .22s ease;
+}
+
+.card:hover,
+.map-link:hover {
+  transform: translateY(-6px);
+}
+
+.review-button:hover,
+.nav a:hover {
+  transform: translateY(-2px);
+}
+
+.reveal {
+  transform: translateY(24px);
+  opacity: 0;
+  transition: transform .55s ease, opacity .55s ease;
+}
+
+.reveal.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Спільний футер: ложка накладається поверх скляної панелі контактів. */
+.site-footer {
+  position: relative;
+  min-height: 430px;
+  padding-top: 205px;
+  overflow: hidden;
+  background: #f5f1eb;
+}
+
+.contact-panel {
+  position: relative;
+  z-index: 2;
+  width: calc(100% - 180px);
+  min-height: 178px;
+  margin: 0 54px 0 126px;
+  padding: 30px clamp(34px, 6vw, 94px) 30px clamp(220px, 29vw, 430px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  /* Скляний ефект: прозорий колір, blur і внутрішній світлий блік. */
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 0 30px 30px 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .22), transparent 26%),
+    linear-gradient(135deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, .08) 38%, rgba(56, 38, 36, .16)),
+    rgba(104, 79, 77, .54);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .36),
+    inset 0 -22px 40px rgba(44, 29, 28, .10),
+    0 18px 40px rgba(61, 47, 43, .18);
+  color: #221918;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(12px, .95vw, 15px);
+  font-weight: 800;
+}
+
+.contact-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(105deg, rgba(255, 255, 255, .28), transparent 24%),
+    linear-gradient(to bottom, rgba(255, 255, 255, .16), transparent 42%);
+  opacity: .55;
+  pointer-events: none;
+}
+
+.contact-panel::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  top: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, .46);
+  pointer-events: none;
+}
+
+.contact-list {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 14px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-width: 0;
+}
+
+.contact-row span:last-child {
+  overflow-wrap: anywhere;
+}
+
+/* Іконки контактів намальовані CSS-ом, без зовнішніх запитів і зайвих файлів. */
+.contact-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  color: #221918;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 26px;
+  text-align: center;
+}
+
+.instagram {
+  border: 3px solid currentColor;
+  border-radius: 7px;
+}
+
+.instagram::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 3px solid currentColor;
+  border-radius: 50%;
+}
+
+.instagram::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.pin::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 14px;
+  height: 14px;
+  border: 4px solid currentColor;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
+.pin::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.phone::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 17px;
+  height: 17px;
+  border: 4px solid currentColor;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+}
+
+.phone::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  bottom: 5px;
+  width: 10px;
+  height: 4px;
+  border-radius: 4px;
+  background: currentColor;
+  transform: rotate(42deg);
+}
+
+.footer-spoon {
+  position: absolute;
+  left: -44px;
+  bottom: -94px;
+  z-index: 4;
+  width: clamp(350px, 32vw, 480px);
+  max-width: none;
+  pointer-events: none;
+}
+
+/* =========================================================
+   Головна сторінка
+   ========================================================= */
+.order-section {
+  position: relative;
+  padding: 72px clamp(24px, 7vw, 95px) 45px;
+  background: #f5f1eb;
+}
+
+.order-section h1 {
+  margin-bottom: 8px;
+  text-align: center;
+  font-family: "Kelly Slab", sans-serif;
+  font-size: 30px;
+  letter-spacing: 10px;
+}
+
+.down-arrow {
+  margin-bottom: 60px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 78px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.arrows {
+  position: absolute;
+  right: clamp(28px, 8vw, 120px);
+  top: 175px;
+}
+
+.arrows button {
+  width: 33px;
+  height: 33px;
+  margin-left: 15px;
+  border: 0;
+  border-radius: 50%;
+  background: #d0cdca;
+  color: #514a49;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 20px;
+  box-shadow: 0 2px 5px #b7b0ad;
+  cursor: pointer;
+}
+
+.cards {
+  max-width: 1060px;
+  margin: 0 auto 105px;
+  display: grid;
+  grid-template-columns: repeat(3, 205px);
+  justify-content: space-between;
+  row-gap: 105px;
+}
+
+/* Картка товару: зображення виступає над кольоровою підкладкою. */
+.card {
+  position: relative;
+  width: 205px;
+  height: 245px;
+  padding-top: 88px;
+  border-radius: 0 0 24px 24px;
+  background: #f0ece8;
+  box-shadow: 0 5px 11px rgba(72, 58, 53, .35);
+  text-align: center;
+}
+
+.image-bg {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  width: 140px;
+  height: 78px;
+  transform: translateX(-50%);
+  border-radius: 14px;
+  background: #a99590;
+}
+
+.card img {
+  position: absolute;
+  top: -86px;
+  left: 50%;
+  z-index: 2;
+  width: 118px;
+  height: 155px;
+  object-fit: contain;
+  transform: translateX(-50%);
+}
+
+.card h3 {
+  color: #805e5b;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.card p {
+  position: absolute;
+  left: 22px;
+  bottom: 21px;
+  color: #805e5b;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.add {
+  position: absolute;
+  right: 14px;
+  bottom: 13px;
+  width: 35px;
+  height: 35px;
+  border: 0;
+  border-radius: 50%;
+  background: #edb8a7;
+  color: #fff;
+  font-size: 27px;
+  line-height: 28px;
+  box-shadow: 0 3px 5px #aaa;
+  cursor: pointer;
+}
+
+.coffee-info {
+  position: relative;
+  max-width: 1180px;
+  height: 470px;
+  margin: 0 auto;
+}
+
+.big-coffee {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 315px;
+  transform: translateX(-50%);
+}
+
+.text-block {
+  position: absolute;
+  width: 290px;
+  text-align: center;
+  font-family: "Kelly Slab", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 5px;
+}
+
+/* Декоративні лінії між текстовими блоками та центральною чашкою. */
+.text-block::after {
+  content: "";
+  position: absolute;
+  width: 132px;
+  height: 75px;
+  border-top: 3px solid #765352;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.top {
+  top: 35px;
+}
+
+.bottom {
+  bottom: 70px;
+}
+
+.left::after {
+  right: -160px;
+  top: 45px;
+  border-right: 3px solid #765352;
+  transform: rotate(45deg);
+}
+
+.right::after {
+  left: -160px;
+  top: 45px;
+  border-left: 3px solid #765352;
+  transform: rotate(-45deg);
+}
+
+.about {
+  min-height: 400px;
+  padding: 58px clamp(24px, 7vw, 95px);
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 35px;
+  align-items: center;
+  border-top: 15px solid #5a3534;
+  background: #260b0b;
+}
+
+.about img {
+  width: 420px;
+  height: 240px;
+  object-fit: cover;
+}
+
+.about-text {
+  color: #f0e8e3;
+}
+
+.about-text h2 {
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 31px;
+  letter-spacing: 10px;
+}
+
+.about-text p {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: 6px;
+}
+
+/* =========================================================
+   Сторінка меню
+   ========================================================= */
+.menu-section {
+  position: relative;
+  padding: 48px clamp(24px, 8vw, 95px) 62px;
+  background: #f5f1eb;
+}
+
+.section-top {
+  max-width: 1180px;
+  margin: 0 auto 70px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+}
+
+.section-top h2 {
+  color: #211213;
+  font-family: "Kelly Slab", sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+}
+
+.section-top h1 {
+  color: #3a2524;
+  font-family: "Great Vibes", cursive;
+  font-size: 62px;
+  font-weight: 400;
+}
+
+.section-top .arrows {
+  position: static;
+  justify-self: end;
+  padding-top: 34px;
+}
+
+.drinks {
+  border-bottom: 15px solid #5a3534;
+}
+
+.desserts {
+  min-height: 690px;
+  padding-top: 63px;
+}
+
+.dessert-top {
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 96px;
+}
+
+.dessert-top .arrows {
+  padding-top: 20px;
+}
+
+.dessert-cards {
+  grid-template-columns: repeat(3, 205px);
+}
+
+/* =========================================================
+   Сторінка "Про нас"
+   ========================================================= */
+.intro {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 20px 0;
+}
+
+.intro h1 {
+  text-align: center;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(46px, 5.8vw, 86px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: clamp(12px, 3.2vw, 44px);
+}
+
+.title-line,
+.founders-title {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.title-line span,
+.founders-title span {
+  height: 6px;
+  background: #0f0b0b;
+}
+
+.title-line h2 {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 18px;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 66px;
+  align-items: center;
+}
+
+.first-story {
+  margin-top: 64px;
+}
+
+.second-story {
+  margin-top: 132px;
+}
+
+.story-grid img {
+  width: 100%;
+  aspect-ratio: 701 / 467;
+  object-fit: cover;
+}
+
+.story-grid p {
+  max-width: 640px;
+  font-size: clamp(22px, 1.74vw, 29px);
+  font-weight: 600;
+  line-height: 1.12;
+}
+
+.first-story p {
+  padding-right: 20px;
+}
+
+.second-story p {
+  padding-left: 20px;
+}
+
+/* Фото засновників: на desktop є вертикальний розділювач, на mobile блоки складаються. */
+.founders {
+  max-width: 1380px;
+  margin: 146px auto 0;
+  padding: 0 46px;
+}
+
+.founders-title {
+  gap: 18px;
+}
+
+.founders-title h2 {
+  white-space: nowrap;
+  font-size: clamp(38px, 4vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.founders-grid {
+  margin-top: 46px;
+  display: grid;
+  grid-template-columns: minmax(260px, 440px) 8px minmax(260px, 440px);
+  justify-content: center;
+  gap: 72px;
+}
+
+.founder img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.founder p {
+  margin-top: 28px;
+  text-align: center;
+  font-size: clamp(20px, 1.75vw, 28px);
+  line-height: 1.2;
+}
+
+.divider {
+  width: 7px;
+  height: 510px;
+  align-self: start;
+  background: #0f0b0b;
+}
+
+/* =========================================================
+   Сторінка контактів
+   ========================================================= */
+.feedback-section {
+  min-height: 720px;
+  padding: 62px clamp(24px, 6vw, 86px) 70px;
+  background: #f5f1eb;
+}
+
+.feedback-section h1 {
+  margin-bottom: 64px;
+  text-align: center;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: clamp(10px, 3vw, 38px);
+}
+
+.feedback-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(420px, 680px);
+  gap: 72px;
+  align-items: center;
+}
+
+.feedback-contacts {
+  display: grid;
+  gap: 26px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(18px, 1.55vw, 24px);
+  font-weight: 800;
+}
+
+.feedback-row {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  min-width: 0;
+}
+
+.feedback-row span:last-child {
+  overflow-wrap: anywhere;
+}
+
+.feedback-row .contact-icon {
+  width: 46px;
+  height: 46px;
+  font-size: 42px;
+  line-height: 46px;
+}
+
+.feedback-row .instagram {
+  border-width: 4px;
+  border-radius: 11px;
+}
+
+.feedback-row .instagram::before {
+  inset: 10px;
+  border-width: 4px;
+}
+
+.map-link {
+  display: block;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 12px 28px rgba(44, 29, 28, .18);
+}
+
+.map-link img {
+  width: 100%;
+  aspect-ratio: 679 / 358;
+  object-fit: cover;
+}
+
+/* Форма відгуку відкривається через script.js, відгуки зберігаються в localStorage. */
+.feedback-actions {
+  max-width: 1180px;
+  margin: 72px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 440px));
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.review-button,
+.review-submit {
+  min-height: 74px;
+  border: 0;
+  border-radius: 999px;
+  background: #704b4a;
+  color: #f5f1eb;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(61, 47, 43, .12);
+}
+
+.review-button:hover,
+.review-submit:hover {
+  background: #633f3f;
+}
+
+.reviews-panel {
+  max-width: 900px;
+  margin: 46px auto 0;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, .26);
+  border-radius: 22px;
+  background: rgba(112, 75, 74, .18);
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.reviews-panel[hidden],
+.review-modal[hidden] {
+  display: none;
+}
+
+.reviews-panel h2 {
+  margin-bottom: 18px;
+  font-size: 28px;
+}
+
+.reviews-list {
+  display: grid;
+  gap: 16px;
+}
+
+.review-item {
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .42);
+}
+
+.review-item strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.review-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(29, 11, 10, .52);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.review-dialog {
+  position: relative;
+  width: min(560px, 100%);
+  padding: 34px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 24px;
+  background: rgba(245, 241, 235, .92);
+  box-shadow: 0 24px 60px rgba(29, 11, 10, .28);
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.review-dialog h2 {
+  margin-bottom: 24px;
+  font-size: 30px;
+}
+
+.review-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  border: 0;
+  background: transparent;
+  color: #241314;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.review-form {
+  display: grid;
+  gap: 18px;
+}
+
+.review-form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 800;
+}
+
+.review-form input,
+.review-form textarea {
+  width: 100%;
+  border: 1px solid rgba(112, 75, 74, .28);
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, .72);
+  color: #241314;
+  font: inherit;
+}
+
+.review-form textarea {
+  resize: vertical;
+}
+
+.review-submit {
+  min-height: 58px;
+  margin-top: 6px;
+  font-size: 18px;
+}
+
+/* Єдиний шрифт для всього контенту сайту.
+   Навігаційне меню не рухаємо: змінюється тільки типографіка блоків сторінок. */
+body,
+button,
+input,
+textarea,
+select,
+.toast,
+.contact-panel,
+.order-section h1,
+.down-arrow,
+.card h3,
+.card p,
+.text-block,
+.about-text,
+.section-top h1,
+.section-top h2,
+.intro h1,
+.title-line h2,
+.founders-title h2,
+.founder p,
+.feedback-section h1,
+.feedback-contacts,
+.review-button,
+.reviews-panel,
+.review-dialog,
+.review-submit {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+/* =========================================================
+   Стилі для планшетів
+   Навігація стає burger-випадачкою, сітки зменшуються,
+   а відступи футера ущільнюються для середніх екранів.
+   ========================================================= */
+@media (max-width: 1024px) {
+  .nav {
+    min-height: 66px;
+  }
+
+  .burger {
+    width: 64px;
+    min-width: 64px;
+    height: 66px;
+  }
+
+  .burger span {
+    width: 42px;
+    height: 3px;
+  }
+
+  /* JS перемикає .nav-open на .nav, щоб відкрити це випадаюче меню. */
+  .nav ul {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    max-height: 0;
+    display: grid;
+    justify-content: stretch;
+    gap: 26px;
+    overflow: hidden;
+    padding: 0 18px;
+    background: rgba(38, 11, 11, .96);
+    box-shadow: 0 18px 28px rgba(31, 13, 12, .18);
+    scrollbar-width: none;
+    transition: max-height .25s ease, padding .25s ease;
+  }
+
+  .nav ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav.nav-open ul {
+    max-height: 260px;
+    padding-top: 12px;
+    padding-bottom: 16px;
+  }
+
+  .nav a {
+    padding: 11px 0;
+    font-size: 13px;
+    letter-spacing: 3px;
+  }
+
+  .nav a.active::after {
+    width: 72px;
+    height: 7px;
+    bottom: 0;
+  }
+
+  .site-footer {
+    min-height: 365px;
+    padding-top: 150px;
+  }
+
+  .contact-panel {
+    width: calc(100% - 34px);
+    min-height: 178px;
+    margin: 0 17px;
+    padding: 30px 22px 30px 152px;
+    font-size: 12px;
+  }
+
+  .contact-row {
+    gap: 14px;
+  }
+
+  .contact-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 23px;
+    line-height: 25px;
+  }
+
+  .footer-spoon {
+    left: -70px;
+    bottom: -70px;
+    width: 320px;
+  }
+
+  .order-section {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  .cards,
+  .dessert-cards {
+    max-width: 560px;
+    grid-template-columns: repeat(2, 205px);
+    justify-content: center;
+    gap: 105px 70px;
+  }
+
+  .coffee-info {
+    max-width: 860px;
+  }
+
+  .text-block {
+    width: 240px;
+    font-size: 15px;
+    letter-spacing: 3px;
+  }
+
+  .left::after,
+  .right::after {
+    display: none;
+  }
+
+  .section-top {
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+  }
+
+  .section-top h1 {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    text-align: center;
+  }
+
+  .section-top h2 {
+    grid-row: 2;
+  }
+
+  .section-top .arrows {
+    grid-row: 2;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .second-story img {
+    order: -1;
+  }
+
+  .first-story,
+  .second-story {
+    margin-top: 54px;
+  }
+
+  .story-grid p,
+  .first-story p,
+  .second-story p {
+    max-width: none;
+    padding: 0;
+  }
+
+  .founders {
+    margin-top: 80px;
+    padding: 0 24px;
+  }
+
+  .founders-title h2 {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .founders-grid {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .feedback-section {
+    padding-top: 46px;
+  }
+
+  .feedback-grid {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .feedback-actions {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+}
+
+/* =========================================================
+   Стилі для телефонів
+   Контент стає в одну колонку, шрифти зменшуються,
+   а футер стає компактним для iPhone і вузьких Android-екранів.
+   ========================================================= */
+@media (max-width: 620px) {
+  .hero {
+    height: 320px;
+  }
+
+  .nav {
+    min-height: 62px;
+  }
+
+  .burger {
+    width: 54px;
+    min-width: 54px;
+    height: 62px;
+  }
+
+  .burger span {
+    width: 36px;
+  }
+
+  .nav ul {
+    gap: 18px;
+    padding-left: 8px;
+  }
+
+  .nav a {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .site-footer {
+    min-height: 350px;
+    padding-top: 128px;
+  }
+
+  .contact-panel {
+    min-height: 188px;
+    padding: 28px 14px 28px 96px;
+    border-radius: 0 22px 22px 0;
+    font-size: 11px;
+  }
+
+  .contact-list {
+    gap: 17px;
+  }
+
+  .contact-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .footer-spoon {
+    left: -92px;
+    bottom: -54px;
+    width: 250px;
+  }
+
+  .order-section {
+    padding: 42px 18px 28px;
+  }
+
+  .order-section h1 {
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: 3px;
+  }
+
+  .down-arrow {
+    margin-bottom: 62px;
+    font-size: 56px;
+  }
+
+  .arrows {
+    position: static;
+    margin: -32px 0 72px;
+    text-align: center;
+  }
+
+  .cards,
+  .dessert-cards {
+    grid-template-columns: 205px;
+    gap: 96px;
+  }
+
+  .coffee-info {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .big-coffee,
+  .text-block {
+    position: static;
+    transform: none;
+  }
+
+  .big-coffee {
+    width: 230px;
+  }
+
+  .text-block {
+    width: 100%;
+    max-width: 360px;
+    font-size: 15px;
+    line-height: 1.35;
+    letter-spacing: 2px;
+  }
+
+  .text-block::after {
+    display: none;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    padding: 36px 18px;
+  }
+
+  .about img {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-text h2 {
+    font-size: 28px;
+    letter-spacing: 5px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    line-height: 1.45;
+    letter-spacing: 1px;
+  }
+
+  .menu-section {
+    padding: 38px 18px 54px;
+  }
+
+  .section-top,
+  .dessert-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    margin-bottom: 82px;
+  }
+
+  .section-top h1 {
+    grid-column: 1 / -1;
+    font-size: 48px;
+  }
+
+  .section-top h2 {
+    font-size: 25px;
+  }
+
+  .section-top .arrows {
+    margin: 0;
+    padding-top: 0;
+  }
+
+  .arrows button {
+    width: 30px;
+    height: 30px;
+    margin-left: 8px;
+    font-size: 28px;
+  }
+
+  .intro {
+    padding-top: 28px;
+    padding-inline: 16px;
+  }
+
+  .intro h1 {
+    font-size: 40px;
+    letter-spacing: 5px;
+  }
+
+  .title-line {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .title-line span,
+  .founders-title span {
+    height: 4px;
+  }
+
+  .title-line h2 {
+    font-size: 24px;
+    letter-spacing: 8px;
+  }
+
+  .story-grid p {
+    font-size: 17px;
+    line-height: 1.35;
+  }
+
+  .founders {
+    margin-top: 64px;
+  }
+
+  .founders-title {
+    grid-template-columns: 1fr;
+  }
+
+  .founders-title h2 {
+    font-size: 32px;
+  }
+
+  .founder p {
+    font-size: 18px;
+  }
+
+  .feedback-section {
+    padding: 36px 16px 52px;
+  }
+
+  .feedback-section h1 {
+    margin-bottom: 40px;
+    font-size: 34px;
+    letter-spacing: 6px;
+  }
+
+  .feedback-contacts {
+    gap: 20px;
+    font-size: 15px;
+  }
+
+  .feedback-row {
+    gap: 16px;
+  }
+
+  .feedback-row .contact-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  .review-button {
+    min-height: 58px;
+    font-size: 18px;
+  }
+
+  .reviews-panel {
+    padding: 20px;
+  }
+
+  .review-dialog {
+    padding: 28px 20px;
+  }
+}

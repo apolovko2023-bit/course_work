@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Головна | Aroma Storm</title>
+  <link rel="stylesheet" href="common.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Kelly+Slab&family=Montserrat:wght@500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <button class="burger" aria-label="Меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul>
+        <li><a href="main.html" class="active">Головна</a></li>
+        <li><a href="menu.html">Меню</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="contacts.html">Контакти</a></li>
+      </ul>
+    </nav>
+
+    <img src="img/logo.png" alt="Aroma Storm" class="hero-img">
+  </header>
+
+  <main>
+    <section class="order-section" id="order">
+      <h1>Популярні напої</h1>
+      <div class="down-arrow">↓</div>
+
+      <div class="arrows">
+        <button type="button" aria-label="Назад">‹</button>
+        <button type="button" aria-label="Вперед">›</button>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/matcha.png" alt="Matcha">
+          <h3>Matcha</h3>
+          <p>110 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/americano.png" alt="Americano">
+          <h3>Americano</h3>
+          <p>50 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/latte.png" alt="Latte">
+          <h3>Latte</h3>
+          <p>90 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+      </div>
+
+      <div class="coffee-info">
+        <div class="text-block left top">
+          У нашій кав'ярні ми використовуємо лише якісну арабіку з насиченим смаком і приємним ароматом.
+        </div>
+
+        <div class="text-block left bottom">
+          Кожна чашка готується зі свіжообсмажених зерен, щоб зберегти максимум смакових нот.
+        </div>
+
+        <img src="img/center.png" alt="Aroma Storm coffee" class="big-coffee">
+
+        <div class="text-block right top">
+          Ми ретельно підбираємо сорти кави з різних куточків світу для найкращого досвіду гостей.
+        </div>
+
+        <div class="text-block right bottom">
+          Насолоджуйтесь збалансованою кавою, яка дарує енергію та гарний настрій на весь день.
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <img src="img/cafe-3.png" alt="Кав'ярня Aroma Storm">
+
+      <div class="about-text">
+        <h2>Про нас</h2>
+        <p>
+          Кав'ярня Aroma Storm - це не просто місце, де п'ють каву, це настрій, який відчувається з першого кроку всередину. Тут завжди звучить легка музика, у повітрі - аромат свіжозмеленої арабіки, а тепле світло наповнює простір затишком.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contacts">
+    <img src="img/spoon.png" alt="" class="footer-spoon">
+    <div class="contact-panel">
+      <div class="contact-list">
+        <div class="contact-row">
+          <span class="contact-icon instagram" aria-hidden="true"></span>
+          <span>@Aroma_storm</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon pin" aria-hidden="true"></span>
+          <span>м. Львів, Франківський район, вул. Княгині Ольги, 43</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon at" aria-hidden="true">@</span>
+          <span>astormcafe@gmail.com</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon phone" aria-hidden="true"></span>
+          <span>+380 98 171 6741</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

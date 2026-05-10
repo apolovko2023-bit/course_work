@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Меню | Aroma Storm</title>
+  <link rel="stylesheet" href="common.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Kelly+Slab&family=Montserrat:wght@500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <button class="burger" aria-label="Меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul>
+        <li><a href="main.html">Головна</a></li>
+        <li><a href="menu.html" class="active">Меню</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="contacts.html">Контакти</a></li>
+      </ul>
+    </nav>
+
+    <img src="img/logo.png" alt="Aroma Storm" class="hero-img">
+  </header>
+
+  <main id="order">
+    <section class="menu-section drinks">
+      <div class="section-top">
+        <h2>Напої:</h2>
+        <h1>Меню</h1>
+        <div class="arrows">
+          <button type="button" aria-label="Назад">‹</button>
+          <button type="button" aria-label="Вперед">›</button>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/matcha.png" alt="Matcha">
+          <h3>Matcha</h3>
+          <p>110 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/americano.png" alt="Americano">
+          <h3>Americano</h3>
+          <p>50 грн</p>
+        </article>
+
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/latte.png" alt="Latte">
+          <h3>Latte</h3>
+          <p>90 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/storm_coffe.png" alt="Storm coffee">
+          <h3>Storm coffee</h3>
+          <p>130 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/mojito.png" alt="Mojito">
+          <h3>Mojito</h3>
+          <p>110 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/bubble_tea.png" alt="Bubble tea">
+          <h3>Bubble tea</h3>
+          <p>130 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="menu-section desserts">
+      <div class="section-top dessert-top">
+        <h2>Солоденьке до кави:</h2>
+        <div class="arrows">
+          <button type="button" aria-label="Назад">‹</button>
+          <button type="button" aria-label="Вперед">›</button>
+        </div>
+      </div>
+
+      <div class="cards dessert-cards">
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/cheesecake.png" alt="Cheesecake">
+          <h3>Cheesecake</h3>
+          <p>130 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/center.png" alt="Napoleon">
+          <h3>Napoleon</h3>
+          <p>140 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+
+        <article class="card">
+          <div class="image-bg"></div>
+          <img src="img/oreo-cake.png" alt="Oreo cake">
+          <h3>Oreo cake</h3>
+          <p>160 грн</p>
+          <button type="button" class="add">+</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contacts">
+    <img src="img/spoon.png" alt="" class="footer-spoon">
+    <div class="contact-panel">
+      <div class="contact-list">
+        <div class="contact-row">
+          <span class="contact-icon instagram" aria-hidden="true"></span>
+          <span>@Aroma_storm</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon pin" aria-hidden="true"></span>
+          <span>м. Львів, Франківський район, вул. Княгині Ольги, 43</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon at" aria-hidden="true">@</span>
+          <span>astormcafe@gmail.com</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon phone" aria-hidden="true"></span>
+          <span>+380 98 171 6741</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
