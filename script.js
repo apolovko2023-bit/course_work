@@ -38,29 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const toast = document.createElement("div");
-  toast.className = "toast";
-  document.body.appendChild(toast);
-
-  let toastTimer;
-  const showToast = (message) => {
-    toast.textContent = message;
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      toast.classList.remove("show");
-    }, 1800);
-  };
-
-  document.querySelectorAll(".add").forEach((button) => {
-    button.addEventListener("click", () => {
-      const card = button.closest(".card");
-      const name = card?.querySelector("h3")?.textContent?.trim() || "Напій";
-      showToast(`${name} додано`);
-    });
-  });
-
   const revealItems = document.querySelectorAll(
     ".card, .about, .story-grid, .founder, .feedback-grid, .feedback-actions, .site-footer"
   );
@@ -180,7 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
       renderReviews();
     }
 
-    showToast("Дякуємо за відгук");
   });
 
   renderReviews();
